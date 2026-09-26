@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fitting Room</title>
+<meta name="description" content="Pick a shirt, tie, tie clip and belt from my own wardrobe and see the real pieces together.">
+<meta name="theme-color" content="#e7ebe9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/ties/burg.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500..700&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#e7ebe9;--panel:#f3f5f4;--card:#fbfcfb;--ink:#182026;--mute:#56626a;--line:#ccd3d0;--line-strong:#95a19d;
+  --acc:#7d1f33;--acc-ink:#ffffff;--acc-soft:#f2e2e6;--swatch:#dce2df;--stage:#d3d9d6;
+  --strap-a:#1d1d1f;--strap-b:#0c0c0d;
+  --shadow:0 1px 2px rgba(24,32,38,.07),0 10px 28px rgba(24,32,38,.12);
+  --display:"Bodoni Moda","Bodoni 72","Didot",Georgia,serif;
+  --ui:"Figtree",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#101315;--panel:#161a1d;--card:#1b2023;--ink:#e5e9e7;--mute:#98a3a9;--line:#2b3337;--line-strong:#4b575c;
+  --acc:#e7a2b0;--acc-ink:#2a0f16;--acc-soft:#38212a;--swatch:#252b2f;--stage:#20262a;
+  --strap-a:#2a2a2d;--strap-b:#111113;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#101315;--panel:#161a1d;--card:#1b2023;--ink:#e5e9e7;--mute:#98a3a9;--line:#2b3337;--line-strong:#4b575c;
+  --acc:#e7a2b0;--acc-ink:#2a0f16;--acc-soft:#38212a;--swatch:#252b2f;--stage:#20262a;
+  --strap-a:#2a2a2d;--strap-b:#111113;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.4)}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 12px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--ui);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+img{max-width:100%}
+
+.app{max-width:1180px;margin:0 auto;padding-inline:24px;padding-block:32px 64px;
+  display:grid;grid-template-columns:minmax(300px,410px) minmax(0,1fr);gap:48px;align-items:start}
+
+/* Fitting panel */
+.fit{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);display:grid;gap:16px;
+  grid-template-areas:"head" "look" "status" "actions"}
+.head{grid-area:head}
+h1{font:600 44px/0.95 var(--display);letter-spacing:-.015em;margin:0;text-wrap:balance}
+.lede{margin:10px 0 0;color:var(--mute);font-size:14px;max-width:34ch;text-wrap:pretty}
+
+.look{grid-area:look;display:block;width:clamp(260px,calc(100vh - 330px),100%);padding:0;border:0;background:none;text-align:left;
+  border-radius:16px;box-shadow:var(--shadow);cursor:default}
+.stage{position:relative;aspect-ratio:1;overflow:hidden;border-radius:16px 16px 0 0;background:var(--stage)}
+.stage img{position:absolute;display:block;max-width:none}
+.stage .shirt{inset:0;width:100%;height:100%;object-fit:cover}
+.stage .tie{left:50%;top:var(--knot);width:var(--tiew);height:auto;transform:translateX(-50%);
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.38))}
+.stage .clip{left:50%;top:var(--clipy);width:var(--clipw);height:auto;transform:translate(-50%,-50%);
+  filter:drop-shadow(0 1px 1.2px rgba(0,0,0,.5))}
+.stage .empty{position:absolute;inset:auto 0 12%;margin:0;text-align:center;color:var(--mute);font-size:14px}
+.belt{position:relative;aspect-ratio:4.2/1;background:var(--stage);border-radius:0 0 16px 16px;overflow:hidden;
+  border-top:1px solid rgba(0,0,0,.08)}
+.belt::before{content:"";position:absolute;left:0;right:0;top:27%;bottom:27%;
+  background:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 3px,transparent 3px 7px) 0 12%/100% 1px no-repeat,
+    repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 3px,transparent 3px 7px) 0 88%/100% 1px no-repeat,
+    linear-gradient(180deg,var(--strap-a),var(--strap-b));
+  box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.belt.none::before{background:none;border-block:1.5px dashed var(--line-strong);box-shadow:none}
+.belt .buckle{position:absolute;left:50%;top:50%;height:88%;width:auto;transform:translate(-50%,-50%);
+  border-radius:4px;box-shadow:0 2px 5px rgba(0,0,0,.45)}
+.belt .none-lb{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:var(--mute);font-size:12.5px}
+
+.status{grid-area:status;display:grid;gap:4px}
+.count{margin:0;font-size:15px}
+.count b{font-variant-numeric:tabular-nums;font-weight:700}
+.summary{margin:0;color:var(--mute);font-size:13.5px}
+.actions{grid-area:actions;display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:1.5px solid var(--line-strong);background:var(--card);border-radius:999px;padding:7px 16px;font-weight:600;font-size:14px;
+  transition:border-color .15s,background-color .15s}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn:focus-visible,.card:focus-visible,.look:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+
+/* Racks */
+.racks{display:grid;gap:34px;min-width:0}
+.hint{margin:0;color:var(--mute);font-size:14px;max-width:62ch}
+section{display:grid;gap:12px}
+h2{font:600 24px/1.1 var(--display);margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+h2 small{font:500 12.5px/1 var(--ui);letter-spacing:.04em;text-transform:uppercase;color:var(--mute);font-variant-numeric:tabular-nums}
+.grid{display:grid;gap:10px}
+.g-shirt{grid-template-columns:repeat(auto-fill,minmax(124px,1fr))}
+.g-tie{grid-template-columns:repeat(auto-fill,minmax(84px,1fr))}
+.g-clip{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.g-belt{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+
+.card{position:relative;display:flex;flex-direction:column;padding:0;border:1.5px solid var(--line);border-radius:12px;
+  background:var(--card);overflow:hidden;text-align:left;
+  transition:border-color .15s,transform .15s,opacity .15s,box-shadow .15s}
+.card:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+.card .ph{display:block;width:100%;background:var(--swatch);overflow:hidden}
+.card .ph img{display:block;width:100%;height:100%;object-fit:cover}
+.g-shirt .ph{aspect-ratio:4/5}
+.g-tie .ph{aspect-ratio:3/5}
+.g-tie .ph img{object-position:50% 0}
+.g-clip .ph{aspect-ratio:4/1;display:grid;place-items:center}
+.g-clip .ph img{width:84%;height:auto;object-fit:contain;filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}
+.g-belt .ph{aspect-ratio:33/20}
+.card .lb{display:block;padding:8px 10px 10px}
+.card .nm{display:block;font-weight:600;font-size:13.5px;line-height:1.25}
+.card .tg{display:block;font-size:12px;line-height:1.3;color:var(--mute);margin-top:2px}
+.card .ck{position:absolute;top:7px;right:7px;width:24px;height:24px;border-radius:50%;display:none;place-items:center;
+  background:var(--acc);color:var(--acc-ink);box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.card.sel{border-color:var(--acc);box-shadow:0 0 0 1.5px var(--acc)}
+.card.sel .ck{display:grid}
+.card.sel .lb{background:var(--acc-soft)}
+.card.dim{opacity:.4;border-style:dashed}
+.card.dim:hover{opacity:.78}
+
+.notes{margin:0;padding:18px 0 0;border-top:1px solid var(--line);display:grid;gap:6px;color:var(--mute);font-size:13px;list-style:none}
+
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);max-width:min(92vw,520px);
+  background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;
+  transition:opacity .2s,transform .2s;z-index:40}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.scrim{position:fixed;inset:0;background:rgba(10,12,14,.62);z-index:25}
+
+/* Phone: the fitting panel becomes a sticky bar; tap the look to enlarge it. */
+@media (max-width:859px){
+  .app{grid-template-columns:minmax(0,1fr);gap:20px;padding-inline:16px;padding-block:0 56px}
+  .fit{top:env(safe-area-inset-top,0px);z-index:20;margin-inline:-16px;padding:10px 16px 12px;background:var(--bg);
+    border-bottom:1px solid var(--line);grid-template-columns:112px minmax(0,1fr);gap:6px 14px;align-items:start;
+    grid-template-areas:"look head" "look status" "look actions"}
+  h1{font-size:26px}
+  .lede,.summary{display:none}
+  .look{width:100%;cursor:zoom-in;border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+  .stage{border-radius:10px 10px 0 0}
+  .belt{border-radius:0 0 10px 10px}
+  .stage .empty,.belt .none-lb{font-size:10px}
+  .count{font-size:14px}
+  .btn{padding:5px 12px;font-size:13px}
+  .fit.zoom .look{position:fixed;left:50%;top:50%;width:min(92vw,480px);transform:translate(-50%,-50%);z-index:30;
+    cursor:zoom-out;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .fit.zoom .stage{border-radius:16px 16px 0 0}
+  .fit.zoom .belt{border-radius:0 0 16px 16px}
+  .fit.zoom .summary{display:block}
+  .racks{gap:28px}
+  h2{font-size:21px}
+  .g-shirt{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+  .g-tie{grid-template-columns:repeat(auto-fill,minmax(68px,1fr))}
+  .g-clip,.g-belt{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+  .card .lb{padding:6px 8px 8px}
+  .card .nm{font-size:12.5px}
+  .card .tg{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+  <aside class="fit" id="fit">
+    <div class="head">
+      <h1>Fitting Room</h1>
+      <p class="lede">8 shirts, 12 ties, 6 clips and 3 belts, cut straight from your photos.</p>
+    </div>
+    <button class="look" id="look" type="button" aria-label="Outfit preview">
+      <div class="stage">
+        <img class="shirt" id="pv-shirt" alt="" hidden>
+        <p class="empty" id="pv-empty">Pick a shirt</p>
+        <img class="tie" id="pv-tie" alt="" hidden>
+        <img class="clip" id="pv-clip" alt="" hidden>
+      </div>
+      <div class="belt" id="pv-belt">
+        <img class="buckle" id="pv-buckle" alt="" hidden>
+        <p class="none-lb" id="pv-nobelt">No belt yet</p>
+      </div>
+    </button>
+    <div class="status">
+      <p class="count" id="count" aria-live="polite"></p>
+      <p class="summary" id="summary"></p>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="fill" type="button">Surprise me</button>
+      <button class="btn" id="reset" type="button">Clear all</button>
+    </div>
+  </aside>
+
+  <div class="racks">
+    <p class="hint">Faded pieces don't fit your current picks. Tap one anyway and whatever it clashes with comes off.</p>
+    <div id="sections" class="racks"></div>
+    <ul class="notes">
+      <li>All shirts are long-sleeve.</li>
+      <li>Your jacket zippers are silver, so silver and gunmetal clips are the safest pairing.</li>
+      <li>All three buckles are black. Match the clip to the buckle's accent metal.</li>
+      <li>Previews use your own photos. Ties are scaled to an 8 cm blade and clips to 6 cm, so proportions are close but not exact.</li>
+      <li>Matches are style guidance. Break them whenever you like.</li>
+    </ul>
+  </div>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const GEO={wcm:25.804,knotTopCm:3,bladeCm:8,clipCm:6,clipAt:.70,tieImgW:186,tieBladePx:170};
+const rootStyle=document.documentElement.style;
+rootStyle.setProperty('--knot',(GEO.knotTopCm/GEO.wcm*100).toFixed(3)+'%');
+rootStyle.setProperty('--tiew',(GEO.tieImgW/GEO.tieBladePx*GEO.bladeCm/GEO.wcm*100).toFixed(3)+'%');
+rootStyle.setProperty('--clipw',(GEO.clipCm/GEO.wcm*100).toFixed(3)+'%');
+rootStyle.setProperty('--clipy',(GEO.clipAt*100).toFixed(2)+'%');
+
+const D={
+ shirt:{label:'Shirt',grid:'g-shirt',items:[
+  {id:'lblue',n:'Blue pinstripe',t:'39/40 M, navy piping'},
+  {id:'magenta',n:'Plum check',t:'Navy piping'},
+  {id:'wine',n:'Burgundy',t:'Andrews'},
+  {id:'bluedot',n:'Pale blue dot',t:'SMOG, L'},
+  {id:'petrol',n:'Petrol',t:'Andrews'},
+  {id:'black',n:'Black',t:'Andrews'},
+  {id:'whitedot',n:'White pin dot',t:'H&M'},
+  {id:'beige',n:'Cream ring print',t:'SMOG, L'}
+ ]},
+ tie:{label:'Tie',grid:'g-tie',items:[
+  {id:'burg',n:'Burgundy'},{id:'navy',n:'Navy'},{id:'geo',n:'Blue geometric'},{id:'silver',n:'Silver grey'},
+  {id:'nstripe',n:'Navy stripe'},{id:'bw',n:'Black stripe'},{id:'char',n:'Charcoal'},{id:'dots',n:'Black pin dot'},
+  {id:'turq',n:'Turquoise'},{id:'lbs',n:'Sky stripe'},{id:'purple',n:'Purple dot'},{id:'gdots',n:'Black micro dot'}
+ ]},
+ clip:{label:'Tie clip',grid:'g-clip',items:[
+  {id:'blue',n:'Blue'},{id:'black',n:'Black'},{id:'red',n:'Red'},{id:'silver',n:'Silver'},{id:'gun',n:'Gunmetal'},{id:'gold',n:'Gold'}
+ ]},
+ belt:{label:'Belt',grid:'g-belt',items:[
+  {id:'chrome',n:'Silver accents',t:'Black buckle'},
+  {id:'gun',n:'Gunmetal accents',t:'Black buckle'},
+  {id:'rose',n:'Rose gold accents',t:'Black buckle'}
+ ]}
+};
+const cats=['shirt','tie','clip','belt'];
+const IMG={
+ shirt:id=>`assets/shirts/${id}-thumb.webp`,
+ tie:id=>`assets/ties/${id}.webp`,
+ clip:id=>`assets/clips/${id}.webp`,
+ belt:id=>`assets/belts/${id}.webp`
+};
+const STAGE_SHIRT=id=>`assets/shirts/${id}.webp`;
+
+const shirtTie={
+ lblue:['navy','burg','nstripe','purple','char','dots','gdots','geo'],
+ magenta:['silver','navy','nstripe','char','dots','gdots','bw','lbs'],
+ wine:['silver','char','bw','dots','gdots','navy','nstripe','lbs'],
+ bluedot:['navy','burg','purple','char','nstripe','silver'],
+ petrol:['silver','burg','bw','dots','lbs','turq'],
+ black:['silver','burg','turq','lbs','purple','geo','bw'],
+ whitedot:['burg','navy','purple','turq','char','nstripe','bw','geo','lbs','silver'],
+ beige:['navy','burg','char','nstripe','turq']
+};
+const tieClip={
+ burg:['red','gold','silver','gun','black'],
+ navy:['blue','silver','gun','black','gold'],
+ geo:['silver','gun','blue','black'],
+ silver:['silver','gun','black','blue'],
+ nstripe:['silver','gun','blue','black'],
+ bw:['silver','gun','black','red'],
+ char:['silver','gun','black','red','blue'],
+ dots:['silver','gun','black','red','gold'],
+ turq:['silver','gun','black','blue'],
+ lbs:['silver','blue','gun','black'],
+ purple:['silver','gun','black','gold'],
+ gdots:['silver','gun','black','red','blue']
+};
+const beltClip={chrome:['silver','gun','black','blue'],gun:['gun','black','blue','silver'],rose:['gold','red','black']};
+
+const combos=[];
+for(const s in shirtTie)for(const t of shirtTie[s])for(const c of tieClip[t])for(const b in beltClip)
+  if(beltClip[b].includes(c))combos.push({shirt:s,tie:t,clip:c,belt:b});
+const fits=(o,k)=>cats.every(c=>!k[c]||o[c]===k[c]);
+const exists=k=>combos.some(o=>fits(o,k));
+const count=k=>combos.filter(o=>fits(o,k)).length;
+const get=(c,id)=>D[c].items.find(i=>i.id===id);
+const EMPTY={shirt:null,tie:null,clip:null,belt:null};
+const DEFAULT={sel:{shirt:'lblue',tie:'burg',clip:'silver',belt:'chrome'},order:['shirt','tie','clip','belt']};
+const KEY='fitting-room-v1';
+
+let sel={...EMPTY},order=[];
+function load(){
+  try{
+    const s=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(s&&s.sel&&cats.every(c=>s.sel[c]===null||get(c,s.sel[c]))&&exists(s.sel)){
+      sel={...EMPTY,...s.sel};order=(s.order||[]).filter(c=>cats.includes(c)&&sel[c]);return;
+    }
+  }catch(e){}
+  sel={...DEFAULT.sel};order=[...DEFAULT.order];
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({sel,order}))}catch(e){}}
+
+/* Build the racks once; later renders only toggle classes. */
+const cards={};
+function build(){
+  const host=document.getElementById('sections');
+  host.innerHTML=cats.map(c=>`<section aria-labelledby="h-${c}"><h2 id="h-${c}">${D[c].label}<small id="n-${c}"></small></h2>
+    <div class="grid ${D[c].grid}">${D[c].items.map(i=>`<button class="card" type="button" aria-pressed="false" data-c="${c}" data-i="${i.id}">
+      <span class="ph"><img src="${IMG[c](i.id)}" alt="" loading="${c==='shirt'||c==='tie'?'eager':'lazy'}" decoding="async"></span>
+      <span class="lb"><span class="nm">${i.n}</span>${i.t?`<span class="tg">${i.t}</span>`:''}</span>
+      <span class="ck" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.3 4.8 9 10 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </button>`).join('')}</div></section>`).join('');
+  host.querySelectorAll('.card').forEach(b=>{(cards[b.dataset.c]??={})[b.dataset.i]=b;});
+  host.addEventListener('click',e=>{const b=e.target.closest('.card');if(b)pick(b.dataset.c,b.dataset.i);});
+}
+
+function pick(cat,id){
+  if(sel[cat]===id){sel[cat]=null;order=order.filter(c=>c!==cat);return commit();}
+  let next={[cat]:id};const dropped=[];
+  for(const c of order.filter(c=>c!==cat).reverse()){
+    const test={...next,[c]:sel[c]};
+    if(exists(test))next=test;else dropped.push(c);
+  }
+  const old=sel;
+  sel={...EMPTY,...next};
+  order=order.filter(c=>c!==cat&&sel[c]);order.push(cat);
+  commit();
+  if(dropped.length){
+    const names=dropped.map(c=>`the ${get(c,old[c]).n.toLowerCase()} ${c==='clip'?'clip':c}`).join(' and ');
+    toast(`${get(cat,id).n} doesn't pair with ${names}, so that came off.`);
+  }
+}
+
+function fill(){
+  const complete=cats.every(c=>sel[c]);
+  const pool=complete?combos.filter(o=>!cats.every(c=>o[c]===sel[c])):combos.filter(o=>fits(o,sel));
+  if(!pool.length)return;
+  const o=pool[Math.floor(Math.random()*pool.length)];
+  const kept=complete?[]:order.filter(c=>sel[c]);
+  sel={...o};order=[...kept,...cats.filter(c=>!kept.includes(c))];
+  commit();
+}
+
+let tt;
+function toast(m){const e=document.getElementById('toast');e.textContent=m;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),3400);}
+
+function setImg(el,src){
+  if(!src){el.hidden=true;el.removeAttribute('src');return;}
+  if(el.getAttribute('src')!==src)el.src=src;
+  el.hidden=false;
+}
+
+function drawLook(){
+  setImg(document.getElementById('pv-shirt'),sel.shirt&&STAGE_SHIRT(sel.shirt));
+  document.getElementById('pv-empty').hidden=!!sel.shirt;
+  setImg(document.getElementById('pv-tie'),sel.tie&&IMG.tie(sel.tie));
+  setImg(document.getElementById('pv-clip'),sel.clip&&IMG.clip(sel.clip));
+  setImg(document.getElementById('pv-buckle'),sel.belt&&IMG.belt(sel.belt));
+  document.getElementById('pv-belt').classList.toggle('none',!sel.belt);
+  document.getElementById('pv-nobelt').hidden=!!sel.belt;
+}
+
+function describe(){
+  const parts=[];
+  if(sel.shirt)parts.push(`${get('shirt',sel.shirt).n} shirt`);
+  if(sel.tie)parts.push(`${get('tie',sel.tie).n.toLowerCase()} tie`);
+  if(sel.clip)parts.push(`${get('clip',sel.clip).n.toLowerCase()} clip`);
+  if(sel.belt)parts.push(`belt with ${get('belt',sel.belt).n.toLowerCase()}`);
+  return parts.join(', ');
+}
+
+function commit(){
+  drawLook();
+  const picked=cats.filter(c=>sel[c]).length,n=count(sel);
+  document.getElementById('count').innerHTML=picked===0?'Pick any piece to start.'
+    :picked===4?'<b>Complete outfit.</b>'
+    :`<b>${n}</b> matching outfit${n===1?'':'s'} left`;
+  const desc=describe();
+  document.getElementById('summary').textContent=desc?desc+'.':'Nothing picked yet.';
+  document.getElementById('look').setAttribute('aria-label',desc?`Outfit preview: ${desc}`:'Outfit preview, empty');
+  document.getElementById('fill').textContent=picked===0?'Surprise me':picked===4?'Shuffle':'Fill the rest';
+  for(const c of cats){
+    let ok=0;
+    for(const i of D[c].items){
+      const on=sel[c]===i.id,fit=exists({...sel,[c]:i.id});
+      if(fit)ok++;
+      const b=cards[c][i.id];
+      b.classList.toggle('sel',on);b.classList.toggle('dim',!fit&&!on);b.setAttribute('aria-pressed',on);
+    }
+    document.getElementById('n-'+c).textContent=`${ok} of ${D[c].items.length} fit`;
+  }
+  save();
+}
+
+/* Phone: tap the small preview to see it large. */
+const fitEl=document.getElementById('fit'),narrow=matchMedia('(max-width:859px)');
+let scrim=null;
+function zoom(on){
+  fitEl.classList.toggle('zoom',on);
+  /* The scrim lives inside the sticky bar so it shares the look's stacking context. */
+  if(on&&!scrim){scrim=document.createElement('div');scrim.className='scrim';scrim.addEventListener('click',()=>zoom(false));fitEl.appendChild(scrim);}
+  if(!on&&scrim){scrim.remove();scrim=null;}
+}
+document.getElementById('look').addEventListener('click',()=>{if(narrow.matches)zoom(!fitEl.classList.contains('zoom'));});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')zoom(false);});
+narrow.addEventListener('change',()=>zoom(false));
+
+document.getElementById('reset').addEventListener('click',()=>{sel={...EMPTY};order=[];commit();});
+document.getElementById('fill').addEventListener('click',fill);
+
+build();load();commit();
+
+/* Warm the cache so switching shirts and ties is instant. */
+addEventListener('load',()=>setTimeout(()=>{
+  for(const i of D.shirt.items){const im=new Image();im.src=STAGE_SHIRT(i.id);}
+},300));
+</script>
+</body>
+</html>

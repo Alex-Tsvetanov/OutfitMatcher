@@ -1,0 +1,6 @@
+# Original photos: large, and camera files can carry location metadata.
+clothes/
+.claude/
+__pycache__/
+*.pyc
+check.png

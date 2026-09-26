@@ -1,0 +1,88 @@
+{
+ "ties": {
+  "burg": {
+   "lean": 1.17,
+   "lenBlades": 3.453
+  },
+  "navy": {
+   "lean": -0.6,
+   "lenBlades": 2.888
+  },
+  "geo": {
+   "lean": -1.02,
+   "lenBlades": 3.335
+  },
+  "silver": {
+   "lean": 0.52,
+   "lenBlades": 3.953
+  },
+  "nstripe": {
+   "lean": 1.03,
+   "lenBlades": 3.253
+  },
+  "bw": {
+   "lean": 0.06,
+   "lenBlades": 3.341
+  },
+  "char": {
+   "lean": 0.68,
+   "lenBlades": 3.288
+  },
+  "dots": {
+   "lean": -0.87,
+   "lenBlades": 3.806
+  },
+  "turq": {
+   "lean": 0.69,
+   "lenBlades": 3.453
+  },
+  "lbs": {
+   "lean": -0.12,
+   "lenBlades": 3.382
+  },
+  "purple": {
+   "lean": 0.79,
+   "lenBlades": 3.8
+  },
+  "gdots": {
+   "lean": 0.25,
+   "lenBlades": 3.441
+  }
+ },
+ "shirts": {
+  "lblue": {
+   "lean": 7.59
+  },
+  "magenta": {
+   "lean": 4.26
+  },
+  "wine": {
+   "lean": 0.0
+  },
+  "bluedot": {
+   "lean": 0.99
+  },
+  "petrol": {
+   "lean": 0.0
+  },
+  "black": {
+   "lean": 0.0
+  },
+  "whitedot": {
+   "lean": 0.0
+  },
+  "beige": {
+   "lean": 0.95
+  }
+ },
+ "frame": {
+  "wcm": 25.804,
+  "hcm": 25.804,
+  "knotTopCm": 3.0,
+  "bladeCm": 8.0,
+  "clipCm": 6.0,
+  "clipAt": 0.7,
+  "tieImgW": 186,
+  "tieBladePx": 170
+ }
+}
