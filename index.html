@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fitting Room</title>
-<meta name="description" content="Pick a shirt, tie, tie clip and belt from my own wardrobe and see the real pieces together.">
+<meta name="description" content="Pick a shirt, tie, tie clip and belt and preview studio recreations of the real wardrobe.">
 <meta name="theme-color" content="#e7ebe9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101315" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="assets/ties/burg.webp" type="image/webp">
+<link rel="icon" href="assets/studio/ties/burg.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500..700&family=Figtree:wght@400;500;600;700&display=swap">
@@ -50,11 +50,11 @@ h1{font:600 44px/0.95 var(--display);letter-spacing:-.015em;margin:0;text-wrap:b
 
 .look{grid-area:look;display:block;width:clamp(260px,calc(100vh - 330px),100%);padding:0;border:0;background:none;text-align:left;
   border-radius:16px;box-shadow:var(--shadow);cursor:default}
-.stage{position:relative;aspect-ratio:1;overflow:hidden;border-radius:16px 16px 0 0;background:var(--stage)}
+.stage{--knot:16.889%;--tiew:11%;--clipw:7.4%;--clipy:43%;position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:16px 16px 0 0;background:var(--stage)}
 .stage img{position:absolute;display:block;max-width:none}
-.stage .shirt{inset:0;width:100%;height:100%;object-fit:cover}
+.stage .shirt{inset:0;width:100%;height:100%;object-fit:contain}
 .stage .tie{left:50%;top:var(--knot);width:var(--tiew);height:auto;transform:translateX(-50%);
-  filter:drop-shadow(0 2px 3px rgba(0,0,0,.38))}
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
 .stage .clip{left:50%;top:var(--clipy);width:var(--clipw);height:auto;transform:translate(-50%,-50%);
   filter:drop-shadow(0 1px 1.2px rgba(0,0,0,.5))}
 .stage .empty{position:absolute;inset:auto 0 12%;margin:0;text-align:center;color:var(--mute);font-size:14px}
@@ -68,7 +68,7 @@ h1{font:600 44px/0.95 var(--display);letter-spacing:-.015em;margin:0;text-wrap:b
   box-shadow:0 1px 2px rgba(0,0,0,.3)}
 .belt.none::before{background:none;border-block:1.5px dashed var(--line-strong);box-shadow:none}
 .belt .buckle{position:absolute;left:50%;top:50%;height:88%;width:auto;transform:translate(-50%,-50%);
-  border-radius:4px;box-shadow:0 2px 5px rgba(0,0,0,.45)}
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
 .belt .none-lb{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:var(--mute);font-size:12.5px}
 
 .status{grid-area:status;display:grid;gap:4px}
@@ -102,8 +102,9 @@ h2 small{font:500 12.5px/1 var(--ui);letter-spacing:.04em;text-transform:upperca
 .card .ph{display:block;width:100%;background:var(--swatch);overflow:hidden}
 .card .ph img{display:block;width:100%;height:100%;object-fit:cover}
 .g-shirt .ph{aspect-ratio:4/5}
-.g-tie .ph{aspect-ratio:3/5}
-.g-tie .ph img{object-position:50% 0}
+.g-shirt .ph img{object-fit:contain}
+.g-tie .ph{aspect-ratio:3/5;padding:10px 8px}
+.g-tie .ph img{object-fit:contain}
 .g-clip .ph{aspect-ratio:4/1;display:grid;place-items:center}
 .g-clip .ph img{width:84%;height:auto;object-fit:contain;filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}
 .g-belt .ph{aspect-ratio:33/20}
@@ -162,7 +163,7 @@ h2 small{font:500 12.5px/1 var(--ui);letter-spacing:.04em;text-transform:upperca
   <aside class="fit" id="fit">
     <div class="head">
       <h1>Fitting Room</h1>
-      <p class="lede">8 shirts, 12 ties, 6 clips and 3 belts, cut straight from your photos.</p>
+      <p class="lede">Your wardrobe, recreated as clean studio shots.</p>
     </div>
     <button class="look" id="look" type="button" aria-label="Outfit preview">
       <div class="stage">
@@ -193,7 +194,7 @@ h2 small{font:500 12.5px/1 var(--ui);letter-spacing:.04em;text-transform:upperca
       <li>All shirts are long-sleeve.</li>
       <li>Your jacket zippers are silver, so silver and gunmetal clips are the safest pairing.</li>
       <li>All three buckles are black. Match the clip to the buckle's accent metal.</li>
-      <li>Previews use your own photos. Ties are scaled to an 8 cm blade and clips to 6 cm, so proportions are close but not exact.</li>
+      <li>Studio images are digitally recreated from your photos. Colors, patterns and fit are approximate.</li>
       <li>Matches are style guidance. Break them whenever you like.</li>
     </ul>
   </div>
@@ -201,12 +202,6 @@ h2 small{font:500 12.5px/1 var(--ui);letter-spacing:.04em;text-transform:upperca
 <div class="toast" id="toast" role="status"></div>
 
 <script>
-const GEO={wcm:25.804,knotTopCm:3,bladeCm:8,clipCm:6,clipAt:.70,tieImgW:186,tieBladePx:170};
-const rootStyle=document.documentElement.style;
-rootStyle.setProperty('--knot',(GEO.knotTopCm/GEO.wcm*100).toFixed(3)+'%');
-rootStyle.setProperty('--tiew',(GEO.tieImgW/GEO.tieBladePx*GEO.bladeCm/GEO.wcm*100).toFixed(3)+'%');
-rootStyle.setProperty('--clipw',(GEO.clipCm/GEO.wcm*100).toFixed(3)+'%');
-rootStyle.setProperty('--clipy',(GEO.clipAt*100).toFixed(2)+'%');
 
 const D={
  shirt:{label:'Shirt',grid:'g-shirt',items:[
@@ -235,12 +230,12 @@ const D={
 };
 const cats=['shirt','tie','clip','belt'];
 const IMG={
- shirt:id=>`assets/shirts/${id}-thumb.webp`,
- tie:id=>`assets/ties/${id}.webp`,
- clip:id=>`assets/clips/${id}.webp`,
- belt:id=>`assets/belts/${id}.webp`
+ shirt:id=>`assets/studio/shirts/${id}.webp`,
+ tie:id=>`assets/studio/ties/${id}.webp`,
+ clip:id=>`assets/studio/clips/${id}.webp`,
+ belt:id=>`assets/studio/belts/${id}.webp`
 };
-const STAGE_SHIRT=id=>`assets/shirts/${id}.webp`;
+const STAGE_SHIRT=id=>`assets/studio/shirts/${id}.webp`;
 
 const shirtTie={
  lblue:['navy','burg','nstripe','purple','char','dots','gdots','geo'],

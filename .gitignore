@@ -4,3 +4,5 @@ clothes/
 __pycache__/
 *.pyc
 check.png
+
+logs/

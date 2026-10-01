@@ -1,0 +1,234 @@
+[
+  {
+    "category": "shirts",
+    "id": "lblue",
+    "file": "shirts/lblue.webp",
+    "source_sha256": "28de70b1ccf256c2b1356fe2c731eb1151b2aae4009c87b562f425b5f90f9663",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Create one precise digital studio product reconstruction of the men's shirt in the two reference photographs (same shirt, full source and detail). Preserve the exact pale blue/navy and white VERY FINE vertical pinstripe fabric, dark navy narrow piping along button placket and chest pocket welt, single welt chest pocket on wearer's left (viewer right), small dark buttons, standard pointed collar and long sleeves with button cuffs. Match the reference fabric color and pinstripe scale closely; do not substitute broad stripes, solid blue or checks. Reconstruct clean pressed fabric with subtle real textile texture. Perfect symmetrical straight-on front view, shirt buttoned completely through top button so a tie can overlay centered collar. Ghost mannequin product photograph without visible person or mannequin. Full shirt including both cuffs and rounded hem, sleeves hanging close to body in a symmetric natural pose. Portrait canvas 1024x1280, truly transparent background, garment bounds x=90..934, y=80..1200, centerline x=512, collar opening centered at x=512 y=175. Neutral daylight studio illumination, subtle cloth shading, no cast shadow outside silhouette, no hanger, no background, no text, no added logo, no tie. Output one shirt only."
+  },
+  {
+    "category": "shirts",
+    "id": "wine",
+    "file": "shirts/wine.webp",
+    "source_sha256": "6495ef1d872d1986732715bb222937493772bc7f49bbcad852a6aab5656a2a2a",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Recreate the actual shirt in references 1 (fabric detail) and 2 (full garment photo). Reference 3 is ONLY the approved studio pose/alignment template: reproduce its exact full-shirt silhouette, buttoned closed collar, camera, body scale, centered placket, cuff/hem positions, lighting and transparent background. Change its fabric and garment-specific details to match references 1 and 2. Deep wine/burgundy red, solid fine cotton with subtle sheen, NO print or stripes, no chest pocket or piping. Small dark burgundy buttons. Match reference color. Preserve original design and small pattern scale precisely. Crisp pressed long-sleeve shirt, realistic fine textile, ghost mannequin invisible, symmetrical straight-on front, closed collar ready to receive a tie, no person/hanger, no labels/logos/text, no tie. Portrait 4:5 image with genuinely transparent background. One shirt only, complete hem and cuffs visible, identical placement to reference 3. No studio background or external shadow."
+  },
+  {
+    "category": "shirts",
+    "id": "magenta",
+    "file": "shirts/magenta.webp",
+    "source_sha256": "093535d12c1fdff732715698bf59b2bc5dff63c2ba6f9180def5bf7f055af795",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Recreate the actual shirt in references 1 (fabric detail) and 2 (full garment photo). Reference 3 is ONLY the approved studio pose/alignment template: reproduce its exact full-shirt silhouette, buttoned closed collar, camera, body scale, centered placket, cuff/hem positions, lighting and transparent background. Change its fabric and garment-specific details to match references 1 and 2. Muted plum/magenta fine micro-check crosshatch, NOT plain purple. Very fine dark grid visible in detail. Narrow navy piping along placket, collar and welt of one chest pocket on viewer right. Small matching mauve pearlescent buttons. Preserve original design and small pattern scale precisely. Crisp pressed long-sleeve shirt, realistic fine textile, ghost mannequin invisible, symmetrical straight-on front, closed collar ready to receive a tie, no person/hanger, no labels/logos/text, no tie. Portrait 4:5 image with genuinely transparent background. One shirt only, complete hem and cuffs visible, identical placement to reference 3. No studio background or external shadow."
+  },
+  {
+    "category": "shirts",
+    "id": "bluedot",
+    "file": "shirts/bluedot.webp",
+    "source_sha256": "834e32483e0b866e701e785aa30f881694e0ae0f5ad75f1e43ca4c94ee54db8f",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Recreate the actual shirt in references 1 (fabric detail) and 2 (full garment photo). Reference 3 is ONLY the approved studio pose/alignment template: reproduce its exact full-shirt silhouette, buttoned closed collar, camera, body scale, centered placket, cuff/hem positions, lighting and transparent background. Change its fabric and garment-specific details to match references 1 and 2. Extremely pale icy blue almost-white cotton with tiny orderly navy and pale-blue square/dot geometric marks, tightly spaced as in reference. This is NOT large polka dots. White pearlescent buttons, no piping, no chest pocket. Preserve original design and small pattern scale precisely. Crisp pressed long-sleeve shirt, realistic fine textile, ghost mannequin invisible, symmetrical straight-on front, closed collar ready to receive a tie, no person/hanger, no labels/logos/text, no tie. Portrait 4:5 image with genuinely transparent background. One shirt only, complete hem and cuffs visible, identical placement to reference 3. No studio background or external shadow."
+  },
+  {
+    "category": "shirts",
+    "id": "petrol",
+    "file": "shirts/petrol.webp",
+    "source_sha256": "eb24b4d30ace5ce1b82db785170d29fe471f1a3b9c035256d13d3131157e1af7",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Recreate the actual shirt in references 1 (fabric detail) and 2 (full garment photo). Reference 3 is ONLY the approved studio pose/alignment template: reproduce its exact full-shirt silhouette, buttoned closed collar, camera, body scale, centered placket, cuff/hem positions, lighting and transparent background. Change its fabric and garment-specific details to match references 1 and 2. Dark desaturated petrol/slate blue-grey fabric with VERY subtle woven vertical self-stripes. Not bright teal. Small dark blue-grey buttons, no chest pocket, no contrasting piping. Preserve original design and small pattern scale precisely. Crisp pressed long-sleeve shirt, realistic fine textile, ghost mannequin invisible, symmetrical straight-on front, closed collar ready to receive a tie, no person/hanger, no labels/logos/text, no tie. Portrait 4:5 image with genuinely transparent background. One shirt only, complete hem and cuffs visible, identical placement to reference 3. No studio background or external shadow."
+  },
+  {
+    "category": "shirts",
+    "id": "black",
+    "file": "shirts/black.webp",
+    "source_sha256": "2afbf3628c4d9fc6519f0d3478cc36a369683b3fcaaee1caf651c153ecaa08a6",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Recreate the actual shirt in references 1 (fabric detail) and 2 (full garment photo). Reference 3 is ONLY the approved studio pose/alignment template: reproduce its exact full-shirt silhouette, buttoned closed collar, camera, body scale, centered placket, cuff/hem positions, lighting and transparent background. Change fabric and garment-specific details to references 1 and 2. Solid deep charcoal-black cotton, NO stripes, NO dots or print, no chest pocket or piping, small black buttons with pale grey rims. Match reference black fabric. Preserve original design and pattern scale precisely. Clean pressed long sleeves, realistic textile, ghost mannequin invisible, symmetrical straight-on front, closed collar ready for a tie, no person/hanger, no labels/logos/text, no tie. Portrait 4:5 image with genuinely transparent background. One complete shirt, hem and cuffs visible, identical placement to reference 3. No external shadow."
+  },
+  {
+    "category": "shirts",
+    "id": "whitedot",
+    "file": "shirts/whitedot.webp",
+    "source_sha256": "56675542a9ef38ec6f69c3056002fc024872ba422f7ea2c6d3184ce22a244cb7",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Recreate the actual shirt in references 1 (fabric detail) and 2 (full garment photo). Reference 3 is ONLY the approved studio pose/alignment template: reproduce its exact full-shirt silhouette, buttoned closed collar, camera, body scale, centered placket, cuff/hem positions, lighting and transparent background. Change fabric and garment-specific details to references 1 and 2. Crisp neutral white cotton with evenly spaced TINY solid black pin dots in staggered orderly diagonal rows, match the exact dot diameter and spacing of reference 1. Not large polka dots or rings. White buttons, no pocket or piping. Preserve original design and pattern scale precisely. Clean pressed long sleeves, realistic textile, ghost mannequin invisible, symmetrical straight-on front, closed collar ready for a tie, no person/hanger, no labels/logos/text, no tie. Portrait 4:5 image with genuinely transparent background. One complete shirt, hem and cuffs visible, identical placement to reference 3. No external shadow."
+  },
+  {
+    "category": "shirts",
+    "id": "beige",
+    "file": "shirts/beige.webp",
+    "source_sha256": "99c534a99e26a1546a0983df0efd590d9f4376e3b854d9107e1d3a6a66cb2190",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Recreate the actual shirt in references 1 (fabric detail) and 2 (full garment photo). Reference 3 is ONLY the approved studio pose/alignment template: reproduce its exact full-shirt silhouette, buttoned closed collar, camera, body scale, centered placket, cuff/hem positions, lighting and transparent background. Change fabric and garment-specific details to references 1 and 2. Warm ivory/cream fabric with dense staggered diagonal rows of small dark grey OUTLINED HOLLOW RINGS, matching reference ring scale and spacing. They are rings, NOT filled dots or large circles. Ivory buttons, no pocket or piping. Preserve original design and pattern scale precisely. Clean pressed long sleeves, realistic textile, ghost mannequin invisible, symmetrical straight-on front, closed collar ready for a tie, no person/hanger, no labels/logos/text, no tie. Portrait 4:5 image with genuinely transparent background. One complete shirt, hem and cuffs visible, identical placement to reference 3. No external shadow. Revision: replace linked rings with separate simple hollow oval rings in dense staggered diagonal rows, matching the original cream fabric."
+  },
+  {
+    "category": "clips",
+    "id": "blue",
+    "file": "clips/blue.webp",
+    "source_sha256": "3d95a33af94b6290dacf17ea523f133c3b513538e3927da973ebe0b00a175dc7",
+    "tool": "built-in image_gen",
+    "prompt": "Reconstruct the original deep metallic blue tie clip, perfectly horizontal, two silver diagonal curved grooves, beveled edges, genuine transparency, neutral studio lighting."
+  },
+  {
+    "category": "ties",
+    "id": "turq",
+    "file": "ties/turq.webp",
+    "source_sha256": "f92098c20d45283b1692f866c79b1fc17eb20493aee64646cec34592c9b60797",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Digitally reconstruct one complete necktie. Reference 1 dictates actual colors and fabric pattern: Turquoise cyan silk with very fine closely spaced darker diagonal woven ribs as source, not broad stripes. Match the bright cool turquoise hue. Reference 2 is ONLY the common geometry, pose and size template; DO NOT copy its burgundy color or basketweave. Use its precise compact symmetrical knot, long centered blade and pointed tip; full tie aligned vertically, sharp clean edges. Preserve source motif at its original relative scale, extending consistently over the full blade. Neutral studio lighting, subtle silk textile sheen, no twist. Isolated with genuine transparent background, NO glow/background shadow, no neck loop, collar, shirt, jacket, person, text or logo. Knot and full pointed tip both visible."
+  },
+  {
+    "category": "ties",
+    "id": "navy",
+    "file": "ties/navy.webp",
+    "source_sha256": "8b82ee2a5f9c6748f84347a3b78795f98be6c217937aa529ae50019161fa27f9",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reference 1 is the EXACT fabric/color/design to reproduce. Reference 2 is ONLY a full tie shape template. Create one digitally recreated, completely straight and symmetrical full men's necktie, isolated on genuine transparent background. Very dark navy blue with subtle tiny navy basketweave jacquard, solid-looking from a distance; NO stripes or large pattern. Match the original fabric pattern faithfully. Same centered compact Windsor knot, narrow neck, gradually widening blade and pointed complete tip as the template. Standard blade width 8cm and visible length 50cm. Long slender tie, no bulbous sides. Neutral daylight with subtle silk sheen, sharp edges. NO surrounding glow, NO background shadows, NO shirt, collar, jacket, person, neck loop, text or logos. Only the tie pixels should be opaque. Preserve pattern scale and direction from reference 1. Full knot and tip visible, aligned vertically in portrait canvas."
+  },
+  {
+    "category": "belts",
+    "id": "gun",
+    "file": "belts/gun.webp",
+    "source_sha256": "0d9157f4bbdc0b161ee0fcb460ccd090a9814ff645fccd7e381209341df7c4e6",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reconstruct exactly the belt buckle in reference 1. Reference 2 shows its real construction. One black rectangular automatic belt buckle with dark polished gunmetal accent metal, straight-on FRONT face, landscape rectangle approximately 1.65:1. Preserve the matte black angular faceted face, fine diagonal seams forming the reference geometric X, and the TWO small folded triangular dark polished gunmetal accent tabs at the upper edge near center and lower edge near the left corner, in the same positions as reference 1. Thin dark polished gunmetal rim. Do NOT make a frame buckle, conventional prong buckle, silver slab, logo, or add any extra ornaments. Perfectly horizontal and level, no perspective skew, sharp clean rounded corners, neutral studio product lighting and realistic metal glints. Show ONLY buckle with no strap or clasp visible behind, centered on transparent background, complete edges and small margin. Closely match reference design and metal tone. No text, labels, props, or background shadow."
+  },
+  {
+    "category": "ties",
+    "id": "geo",
+    "file": "ties/geo.webp",
+    "source_sha256": "ec9d5f4cead2709764781a5e66515586867635ffe078d676d21a440d37a42c71",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reference 1 is the EXACT fabric/color/design to reproduce. Reference 2 is ONLY a full tie shape template. Create one digitally recreated, completely straight and symmetrical full men's necktie, isolated on genuine transparent background. Navy ground and dense outlined blue/silver interlocking rectangular geometric maze motifs. Match the exact squared motif of the source. Match the original fabric pattern faithfully. Same centered compact Windsor knot, narrow neck, gradually widening blade and pointed complete tip as the template. Standard blade width 8cm and visible length 50cm. Long slender tie, no bulbous sides. Neutral daylight with subtle silk sheen, sharp edges. NO surrounding glow, NO background shadows, NO shirt, collar, jacket, person, neck loop, text or logos. Only the tie pixels should be opaque. Preserve pattern scale and direction from reference 1. Full knot and tip visible, aligned vertically in portrait canvas."
+  },
+  {
+    "category": "ties",
+    "id": "lbs",
+    "file": "ties/lbs.webp",
+    "source_sha256": "04104b95837e55cd87a7dba38d07ce3d92fec8ee6f66c95fbfd037f405207d80",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Digitally reconstruct one complete necktie. Reference 1 dictates actual colors and fabric pattern: Pale sky blue silk with broad diagonal ivory/silver bands alternating with pale blue textured bands; match stripe width, direction and all fine details in source. Reference 2 is ONLY the common geometry, pose and size template; DO NOT copy its burgundy color or basketweave. Use its precise compact symmetrical knot, long centered blade and pointed tip; full tie aligned vertically, sharp clean edges. Preserve source motif at its original relative scale, extending consistently over the full blade. Neutral studio lighting, subtle silk textile sheen, no twist. Isolated with genuine transparent background, NO glow/background shadow, no neck loop, collar, shirt, jacket, person, text or logo. Knot and full pointed tip both visible."
+  },
+  {
+    "category": "ties",
+    "id": "gdots",
+    "file": "ties/gdots.webp",
+    "source_sha256": "3e9335c9e3a02c6efd117b5010056d214829be771c148ec433e86d742d7071b4",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Digitally reconstruct one complete necktie. Reference 1 dictates actual colors and fabric pattern: Near-black silk with extremely tiny dense white/silver micro-dots in ordered diagonal rows. Denser/smaller dots than a normal polka-dot tie; match source. Reference 2 is ONLY the common geometry, pose and size template; DO NOT copy its burgundy color or basketweave. Use its precise compact symmetrical knot, long centered blade and pointed tip; full tie aligned vertically, sharp clean edges. Preserve source motif at its original relative scale, extending consistently over the full blade. Neutral studio lighting, subtle silk textile sheen, no twist. Isolated with genuine transparent background, NO glow/background shadow, no neck loop, collar, shirt, jacket, person, text or logo. Knot and full pointed tip both visible."
+  },
+  {
+    "category": "ties",
+    "id": "dots",
+    "file": "ties/dots.webp",
+    "source_sha256": "73200b7173cbb45cb4e3adc5f60194e78c03856bd12796bb303b17c4d160e162",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Digitally reconstruct one complete necktie. Reference 1 dictates actual colors and fabric pattern: Black silk with small spaced silver-white pin dots in orderly staggered rows. Match exact dot spacing and size; no large dots. Reference 2 is ONLY the common geometry, pose and size template; DO NOT copy its burgundy color or basketweave. Use its precise compact symmetrical knot, long centered blade and pointed tip; full tie aligned vertically, sharp clean edges. Preserve the source motif at its original relative scale, extending consistently over the full blade. Neutral studio lighting, subtle silk textile sheen, no twist. Isolated with genuine transparent background, NO glow/background shadow, no neck loop, collar, shirt, jacket, person, text or logo. Knot and full pointed tip both visible."
+  },
+  {
+    "category": "belts",
+    "id": "rose",
+    "file": "belts/rose.webp",
+    "source_sha256": "5f8d71a629f5c12abdc4fa446a5d3992e172fa13912e6a6c7d9b54cf0ce34bce",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reconstruct exactly the belt buckle in reference 1. Reference 2 shows its real construction. One black rectangular automatic belt buckle with warm rose-gold accent metal, straight-on FRONT face, landscape rectangle approximately 1.65:1. Preserve the matte black angular faceted face, fine diagonal seams forming the reference geometric X, and the TWO small folded triangular warm rose-gold accent tabs at the upper edge near center and lower edge near the left corner, in the same positions as reference 1. Thin warm rose-gold rim. Do NOT make a frame buckle, conventional prong buckle, silver slab, logo, or add any extra ornaments. Perfectly horizontal and level, no perspective skew, sharp clean rounded corners, neutral studio product lighting and realistic metal glints. Show ONLY buckle with no strap or clasp visible behind, centered on transparent background, complete edges and small margin. Closely match reference design and metal tone. No text, labels, props, or background shadow."
+  },
+  {
+    "category": "ties",
+    "id": "nstripe",
+    "file": "ties/nstripe.webp",
+    "source_sha256": "034659c733a8010bffdb2a87eb135440023f6b648e00fb2538c1a26808a0c2e3",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Digitally reconstruct one complete necktie. Reference 1 dictates actual colors and fabric pattern: Dark midnight navy silk with the thin grouped white/silver diagonal stripes shown in the reference. Preserve stripe spacing, widths and direction. Reference 2 is ONLY the common geometry, pose and size template; DO NOT copy its burgundy color or basketweave. Use its precise compact symmetrical knot, long centered blade and pointed tip; full tie aligned vertically, sharp clean edges. Preserve the source motif at its original relative scale, extending consistently over the full blade. Neutral studio lighting, subtle silk textile sheen, no twist. Isolated with genuine transparent background, NO glow/background shadow, no neck loop, collar, shirt, jacket, person, text or logo. Knot and full pointed tip both visible."
+  },
+  {
+    "category": "belts",
+    "id": "chrome",
+    "file": "belts/chrome.webp",
+    "source_sha256": "737a8c89d3ee25a56bb0ee62589728ddf071550e8c07e969bdb9bb146160a499",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reconstruct exactly the belt buckle in reference 1. Reference 2 shows its real construction. One black rectangular automatic belt buckle with bright polished silver chrome accent metal, straight-on FRONT face, landscape rectangle approximately 1.65:1. Preserve the matte black angular faceted face, fine diagonal seams forming the reference geometric X, and the TWO small folded triangular bright polished silver chrome accent tabs at the upper edge near center and lower edge near the left corner, in the same positions as reference 1. Thin bright polished silver chrome rim. Do NOT make a frame buckle, conventional prong buckle, silver slab, logo, or add any extra ornaments. Perfectly horizontal and level, no perspective skew, sharp clean rounded corners, neutral studio product lighting and realistic metal glints. Show ONLY buckle with no strap or clasp visible behind, centered on transparent background, complete edges and small margin. Closely match reference design and metal tone. No text, labels, props, or background shadow."
+  },
+  {
+    "category": "ties",
+    "id": "bw",
+    "file": "ties/bw.webp",
+    "source_sha256": "b9199eee0e5a5c2ffdcb78b7da47489a4de37a63858217a230b6a62ecff0a6dc",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Digitally reconstruct one complete necktie. Reference 1 dictates actual colors and fabric pattern: Black silk with slender paired white/silver diagonal stripes, matching spacing and direction of reference, NOT navy. Reference 2 is ONLY the common geometry, pose and size template; DO NOT copy its burgundy color or basketweave. Use its precise compact symmetrical knot, long centered blade and pointed tip; full tie aligned vertically, sharp clean edges. Preserve the source motif at its original relative scale, extending consistently over the full blade. Neutral studio lighting, subtle silk textile sheen, no twist. Isolated with genuine transparent background, NO glow/background shadow, no neck loop, collar, shirt, jacket, person, text or logo. Knot and full pointed tip both visible."
+  },
+  {
+    "category": "clips",
+    "id": "gold",
+    "file": "clips/gold.webp",
+    "source_sha256": "6a5ea754e1bcd696c71642f2811118d7d3ec299579f6cd430744970e0f247a06",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reconstruct one warm yellow gold tie clip using reference 1 for exact material/color and reference 2 for approved perfectly horizontal pose and shape. Same rounded slim rectangular bar, beveled rim, TWO thin diagonal curved silver grooves at roughly one-quarter and three-quarters length, retain reference design. No extra stripes. Straight-on flat front view, length-to-height about 12:1; do not show rear spring clasp. Clean precise studio metal reflections, neutral daylight. One complete bar only, centered horizontally, with generous genuine transparent margins. No background, shadow outside silhouette, text, logos, props, tie or shirt. Keep the template's geometry while replacing its blue metal with warm yellow gold."
+  },
+  {
+    "category": "clips",
+    "id": "black",
+    "file": "clips/black.webp",
+    "source_sha256": "15e776288702a103cfa87b8d6ae122ed8eb785c115867eb6aa0705dd23ea69be",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reconstruct one glossy black tie clip using reference 1 for exact material/color and reference 2 for approved perfectly horizontal pose and shape. Same rounded slim rectangular bar, beveled rim, TWO thin diagonal curved silver grooves at roughly one-quarter and three-quarters length, retain reference design. No extra stripes. Straight-on flat front view, length-to-height about 12:1; do not show rear spring clasp. Clean precise studio metal reflections, neutral daylight. One complete bar only, centered horizontally, with generous genuine transparent margins. No background, shadow outside silhouette, text, logos, props, tie or shirt. Keep the template's geometry while replacing its blue metal with glossy black."
+  },
+  {
+    "category": "clips",
+    "id": "gun",
+    "file": "clips/gun.webp",
+    "source_sha256": "4b71048e487a5c7b32bbe1f411f81e0a2fd188a7e6ba81178f24ae6220e90343",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reconstruct one dark polished gunmetal tie clip using reference 1 for exact material/color and reference 2 for approved perfectly horizontal pose and shape. Same rounded slim rectangular bar, beveled rim, TWO thin diagonal curved silver grooves at roughly one-quarter and three-quarters length, retain reference design. No extra stripes. Straight-on flat front view, length-to-height about 12:1; do not show rear spring clasp. Clean precise studio metal reflections, neutral daylight. One complete bar only, centered horizontally, with generous genuine transparent margins. No background, shadow outside silhouette, text, logos, props, tie or shirt. Keep the template's geometry while replacing its blue metal with dark polished gunmetal."
+  },
+  {
+    "category": "ties",
+    "id": "burg",
+    "file": "ties/burg.webp",
+    "source_sha256": "29206a3d1dad26771f089d8af12bd13ba76bcef1e993d2cde255bbbac673f4de",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reference 1 is the EXACT fabric/color/design to reproduce. Reference 2 is ONLY a full tie shape template. Create one digitally recreated, completely straight and symmetrical full men's necktie, isolated on genuine transparent background. Deep burgundy red with dense fine black-red basketweave/micro-grid, NO polka dots. Match the original fabric pattern faithfully. Same centered compact Windsor knot, narrow neck, gradually widening blade and pointed complete tip as the template. Standard blade width 8cm and visible length 50cm. Long slender tie, no bulbous sides. Neutral daylight with subtle silk sheen, sharp edges. NO surrounding glow, NO background shadows, NO shirt, collar, jacket, person, neck loop, text or logos. Only the tie pixels should be opaque. Preserve pattern scale and direction from reference 1. Full knot and tip visible, aligned vertically in portrait canvas."
+  },
+  {
+    "category": "ties",
+    "id": "char",
+    "file": "ties/char.webp",
+    "source_sha256": "598590f5492f04beb904e0d763ba151f64da6ec9f0ef931cfd56a6b05bf05e95",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Digitally reconstruct one complete necktie. Reference 1 dictates actual colors and fabric pattern: Charcoal black-grey fine densely woven micro-grid jacquard. NO dots or diagonal fashion stripes. Match reference dark neutral tones. Reference 2 is ONLY the common geometry, pose and size template; DO NOT copy its burgundy color or basketweave. Use its precise compact symmetrical knot, long centered blade and pointed tip; full tie aligned vertically, sharp clean edges. Preserve the source motif at its original relative scale, extending consistently over the full blade. Neutral studio lighting, subtle silk textile sheen, no twist. Isolated with genuine transparent background, NO glow/background shadow, no neck loop, collar, shirt, jacket, person, text or logo. Knot and full pointed tip both visible."
+  },
+  {
+    "category": "ties",
+    "id": "silver",
+    "file": "ties/silver.webp",
+    "source_sha256": "13b803eda7c38363d6b47482a5d01fafaa67f5f10db4a7c130be97c02505ba6d",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reference 1 is the EXACT fabric/color/design to reproduce. Reference 2 is ONLY a full tie shape template. Create one digitally recreated, completely straight and symmetrical full men's necktie, isolated on genuine transparent background. Silver-grey fine dense diagonal micro-check/basketweave jacquard, NOT plain satin; match subtle grey on pale grey texture. Match the original fabric pattern faithfully. Same centered compact Windsor knot, narrow neck, gradually widening blade and pointed complete tip as the template. Standard blade width 8cm and visible length 50cm. Long slender tie, no bulbous sides. Neutral daylight with subtle silk sheen, sharp edges. NO surrounding glow, NO background shadows, NO shirt, collar, jacket, person, neck loop, text or logos. Only the tie pixels should be opaque. Preserve pattern scale and direction from reference 1. Full knot and tip visible, aligned vertically in portrait canvas."
+  },
+  {
+    "category": "clips",
+    "id": "red",
+    "file": "clips/red.webp",
+    "source_sha256": "c42834d091e4dbc526ec8faa89760d9718fe3b82131a95b78385c63a5537144f",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reconstruct one metallic ruby red tie clip using reference 1 for exact material/color and reference 2 for approved perfectly horizontal pose and shape. Same rounded slim rectangular bar, beveled rim, TWO thin diagonal curved silver grooves at roughly one-quarter and three-quarters length, retain reference design. No extra stripes. Straight-on flat front view, length-to-height about 12:1; do not show rear spring clasp. Clean precise studio metal reflections, neutral daylight. One complete bar only, centered horizontally, with generous genuine transparent margins. No background, shadow outside silhouette, text, logos, props, tie or shirt. Keep the template's geometry while replacing its blue metal with metallic ruby red."
+  },
+  {
+    "category": "ties",
+    "id": "purple",
+    "file": "ties/purple.webp",
+    "source_sha256": "83878ba7009682ae111f444042f7d452b5d4390037693438c73e19978c9e3d2b",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Digitally reconstruct one complete necktie. Reference 1 dictates actual colors and fabric pattern: Medium deep purple silk with very small silver/white dots in dense orderly staggered rows; match purple hue and tiny dot spacing. Reference 2 is ONLY the common geometry, pose and size template; DO NOT copy its burgundy color or basketweave. Use its precise compact symmetrical knot, long centered blade and pointed tip; full tie aligned vertically, sharp clean edges. Preserve source motif at its original relative scale, extending consistently over the full blade. Neutral studio lighting, subtle silk textile sheen, no twist. Isolated with genuine transparent background, NO glow/background shadow, no neck loop, collar, shirt, jacket, person, text or logo. Knot and full pointed tip both visible."
+  },
+  {
+    "category": "clips",
+    "id": "silver",
+    "file": "clips/silver.webp",
+    "source_sha256": "2f5ebb30932afeb12c70a34e816aa8dc61ba26fc5a8f95cd29d3c02522e06e91",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Reconstruct one bright polished silver tie clip using reference 1 for exact material/color and reference 2 for approved perfectly horizontal pose and shape. Same rounded slim rectangular bar, beveled rim, TWO thin diagonal curved silver grooves at roughly one-quarter and three-quarters length, retain reference design. No extra stripes. Straight-on flat front view, length-to-height about 12:1; do not show rear spring clasp. Clean precise studio metal reflections, neutral daylight. One complete bar only, centered horizontally, with generous genuine transparent margins. No background, shadow outside silhouette, text, logos, props, tie or shirt. Keep the template's geometry while replacing its blue metal with bright polished silver."
+  }
+]
