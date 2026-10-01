@@ -53,15 +53,15 @@ h1{font:600 44px/0.95 var(--display);letter-spacing:-.015em;margin:0;text-wrap:b
 .stage{--knot:16.889%;--tiew:11%;--clipw:7.4%;--clipy:43%;position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:16px 16px 0 0;background:var(--stage)}
 .stage img{position:absolute;display:block;max-width:none}
 .stage .shirt{inset:0;width:100%;height:100%;object-fit:contain}
-.stage .tie{left:50%;top:var(--knot);width:var(--tiew);height:auto;transform:translateX(-50%);
-  clip-path:inset(16% 0 0);transform:translate(-50%,-16%);filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
-.stage .tie-knot{left:50%;top:var(--knot);width:var(--tiew);height:auto;clip-path:inset(0 0 84%);
-  transform:translateX(-50%) scale(var(--knot-x,1),var(--knot-y,1));transform-origin:top center;
+.stage .tie{left:50%;top:var(--knot);width:var(--tiew);height:auto;
+  clip-path:inset(15.1% 0 0);transform:translate(-50%,-15.1%);filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
+.stage .tie-knot{left:50%;top:var(--knot);width:var(--tiew);height:auto;clip-path:inset(0 0 84.9%);
+  transform:translateX(-50%) scaleX(var(--knot-x,1));transform-origin:top center;
   filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
-.stage .tie-knot[data-knot-style="four"]{--knot-x:.84;--knot-y:.92}
-.stage .tie-knot[data-knot-style="pratt"]{--knot-x:.94;--knot-y:1}
-.stage .tie-knot[data-knot-style="half"]{--knot-x:1.06;--knot-y:1.04}
-.stage .tie-knot[data-knot-style="windsor"]{--knot-x:1.23;--knot-y:1.08}
+.stage .tie-knot[data-knot-style="four"]{--knot-x:.84}
+.stage .tie-knot[data-knot-style="pratt"]{--knot-x:.94}
+.stage .tie-knot[data-knot-style="half"]{--knot-x:1.06}
+.stage .tie-knot[data-knot-style="windsor"]{--knot-x:1.23}
 .stage .clip{left:50%;top:var(--clipy);width:var(--clipw);height:auto;transform:translate(-50%,-50%);
   filter:drop-shadow(0 1px 1.2px rgba(0,0,0,.5))}
 .stage .empty{position:absolute;inset:auto 0 12%;margin:0;text-align:center;color:var(--mute);font-size:14px}
