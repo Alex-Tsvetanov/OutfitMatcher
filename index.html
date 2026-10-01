@@ -54,7 +54,14 @@ h1{font:600 44px/0.95 var(--display);letter-spacing:-.015em;margin:0;text-wrap:b
 .stage img{position:absolute;display:block;max-width:none}
 .stage .shirt{inset:0;width:100%;height:100%;object-fit:contain}
 .stage .tie{left:50%;top:var(--knot);width:var(--tiew);height:auto;transform:translateX(-50%);
+  clip-path:inset(16% 0 0);transform:translate(-50%,-16%);filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
+.stage .tie-knot{left:50%;top:var(--knot);width:var(--tiew);height:auto;clip-path:inset(0 0 84%);
+  transform:translateX(-50%) scale(var(--knot-x,1),var(--knot-y,1));transform-origin:top center;
   filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
+.stage .tie-knot[data-knot-style="four"]{--knot-x:.84;--knot-y:.92}
+.stage .tie-knot[data-knot-style="pratt"]{--knot-x:.94;--knot-y:1}
+.stage .tie-knot[data-knot-style="half"]{--knot-x:1.06;--knot-y:1.04}
+.stage .tie-knot[data-knot-style="windsor"]{--knot-x:1.23;--knot-y:1.08}
 .stage .clip{left:50%;top:var(--clipy);width:var(--clipw);height:auto;transform:translate(-50%,-50%);
   filter:drop-shadow(0 1px 1.2px rgba(0,0,0,.5))}
 .stage .empty{position:absolute;inset:auto 0 12%;margin:0;text-align:center;color:var(--mute);font-size:14px}
@@ -94,6 +101,7 @@ h2 small{font:500 12.5px/1 var(--ui);letter-spacing:.04em;text-transform:upperca
 .g-tie{grid-template-columns:repeat(auto-fill,minmax(84px,1fr))}
 .g-clip{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
 .g-belt{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.g-knot{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}
 
 .card{position:relative;display:flex;flex-direction:column;padding:0;border:1.5px solid var(--line);border-radius:12px;
   background:var(--card);overflow:hidden;text-align:left;
@@ -118,6 +126,13 @@ h2 small{font:500 12.5px/1 var(--ui);letter-spacing:.04em;text-transform:upperca
 .card.sel .lb{background:var(--acc-soft)}
 .card.dim{opacity:.4;border-style:dashed}
 .card.dim:hover{opacity:.78}
+.knot-card{align-items:center;min-height:126px;text-align:center}
+.knot-card .ph{height:54px;display:grid;place-items:center;padding:8px}
+.knot-icon{width:38px;height:38px;color:var(--ink)}
+.knot-card .lb{width:100%;padding:7px 5px}
+.knot-card .tg{font-size:11px}
+.knot-card.recommended{border-color:var(--acc)}
+.knot-help{margin:0;color:var(--mute);font-size:13px;line-height:1.45;max-width:64ch}
 
 .notes{margin:0;padding:18px 0 0;border-top:1px solid var(--line);display:grid;gap:6px;color:var(--mute);font-size:13px;list-style:none}
 
@@ -170,6 +185,7 @@ h2 small{font:500 12.5px/1 var(--ui);letter-spacing:.04em;text-transform:upperca
         <img class="shirt" id="pv-shirt" alt="" hidden>
         <p class="empty" id="pv-empty">Pick a shirt</p>
         <img class="tie" id="pv-tie" alt="" hidden>
+        <img class="tie-knot" id="pv-knot" alt="" hidden>
         <img class="clip" id="pv-clip" alt="" hidden>
       </div>
       <div class="belt" id="pv-belt">
@@ -274,17 +290,18 @@ const EMPTY={shirt:null,tie:null,clip:null,belt:null};
 const DEFAULT={sel:{shirt:'lblue',tie:'burg',clip:'silver',belt:'chrome'},order:['shirt','tie','clip','belt']};
 const KEY='fitting-room-v1';
 
-let sel={...EMPTY},order=[];
+let sel={...EMPTY},order=[],knot='four';
 function load(){
   try{
     const s=JSON.parse(localStorage.getItem(KEY)||'null');
     if(s&&s.sel&&cats.every(c=>s.sel[c]===null||get(c,s.sel[c]))&&exists(s.sel)){
-      sel={...EMPTY,...s.sel};order=(s.order||[]).filter(c=>cats.includes(c)&&sel[c]);return;
+      sel={...EMPTY,...s.sel};order=(s.order||[]).filter(c=>cats.includes(c)&&sel[c]);
+      knot=KNOTS[s.knot]?s.knot:recommendKnot();return;
     }
   }catch(e){}
   sel={...DEFAULT.sel};order=[...DEFAULT.order];
 }
-function save(){try{localStorage.setItem(KEY,JSON.stringify({sel,order}))}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({sel,order,knot}))}catch(e){}}
 
 /* Build the racks once; later renders only toggle classes. */
 const cards={};
@@ -295,9 +312,38 @@ function build(){
       <span class="ph"><img src="${IMG[c](i.id)}" alt="" loading="${c==='shirt'||c==='tie'?'eager':'lazy'}" decoding="async"></span>
       <span class="lb"><span class="nm">${i.n}</span>${i.t?`<span class="tg">${i.t}</span>`:''}</span>
       <span class="ck" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.3 4.8 9 10 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    </button>`).join('')}</div></section>`).join('');
+    </button>`).join('')}</div>${c==='tie'?knotSection():''}</section>`).join('');
   host.querySelectorAll('.card').forEach(b=>{(cards[b.dataset.c]??={})[b.dataset.i]=b;});
-  host.addEventListener('click',e=>{const b=e.target.closest('.card');if(b)pick(b.dataset.c,b.dataset.i);});
+  host.addEventListener('click',e=>{const b=e.target.closest('.card');if(b?.dataset.c)pick(b.dataset.c,b.dataset.i);});
+  host.querySelectorAll('button[data-knot]').forEach(b=>b.addEventListener('click',()=>{knot=b.dataset.knot;commit();}));
+}
+
+const KNOTS={
+ four:{name:'Four-in-Hand',size:'Small · relaxed',shape:'four'},
+ pratt:{name:'Pratt',size:'Medium · neat',shape:'pratt'},
+ half:{name:'Half-Windsor',size:'Medium · balanced',shape:'half'},
+ windsor:{name:'Windsor',size:'Full · broad',shape:'windsor'}
+};
+// Collar shapes are estimated from the original wardrobe photos, not the generated shirt art.
+const COLLAR={lblue:'narrow point',magenta:'classic point',wine:'classic point',bluedot:'semi-spread',petrol:'classic point',black:'semi-spread',whitedot:'semi-spread',beige:'classic point'};
+const BUSY_TIES=new Set(['burg','geo','nstripe','bw','dots','turq','lbs','purple','gdots']);
+function knotScores(){
+  const collar=COLLAR[sel.shirt]||'classic';
+  const shape=collar==='narrow point'?'point':collar==='semi-spread'?'semi':'classic';
+  const scores={
+    point:{four:10,pratt:8,half:6,windsor:1},
+    classic:{four:9,pratt:8,half:9,windsor:4},
+    semi:{four:7,pratt:8,half:10,windsor:7}
+  }[shape];
+  if(BUSY_TIES.has(sel.tie)){scores.four++;scores.windsor=Math.max(0,scores.windsor-1);}
+  return scores;
+}
+function knotSection(){
+  return `<section class="knot-section" aria-labelledby="h-knot"><h2 id="h-knot">Tie knot<small id="knot-collar"></small></h2>
+    <div class="grid g-knot">${Object.entries(KNOTS).map(([id,k])=>`<button class="card knot-card" type="button" data-knot="${id}" aria-pressed="false">
+      <span class="ph"><svg class="knot-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="${k.shape==='four'?'M11 5 29 5 25 21 21 27 25 37 15 37 19 27 15 21Z':k.shape==='pratt'?'M10 5 30 5 26 20 21 26 26 37 14 37 19 26 14 20Z':k.shape==='half'?'M8 5 32 5 27 20 20 27 27 37 13 37 20 27 13 20Z':'M5 5 35 5 29 19 20 27 29 37 11 37 20 27 11 19Z'}" fill="currentColor"/></svg></span>
+      <span class="lb"><span class="nm">${k.name}</span><span class="tg knot-note"></span></span></button>`).join('')}</div>
+    <p class="knot-help" id="knot-help"></p></section>`;
 }
 
 function pick(cat,id){
@@ -309,6 +355,7 @@ function pick(cat,id){
   }
   const old=sel;
   sel={...EMPTY,...next};
+  knot=recommendKnot();
   order=order.filter(c=>c!==cat&&sel[c]);order.push(cat);
   commit();
   if(dropped.length){
@@ -324,6 +371,7 @@ function fill(){
   const o=pool[Math.floor(Math.random()*pool.length)];
   const kept=complete?[]:order.filter(c=>sel[c]);
   sel={...o};order=[...kept,...cats.filter(c=>!kept.includes(c))];
+  knot=recommendKnot();
   commit();
 }
 
@@ -340,16 +388,40 @@ function drawLook(){
   setImg(document.getElementById('pv-shirt'),sel.shirt&&STAGE_SHIRT(sel.shirt));
   document.getElementById('pv-empty').hidden=!!sel.shirt;
   setImg(document.getElementById('pv-tie'),sel.tie&&IMG.tie(sel.tie));
+  const knotImage=document.getElementById('pv-knot');
+  setImg(knotImage,sel.tie&&IMG.tie(sel.tie));
+  knotImage.dataset.knotStyle=knot;
   setImg(document.getElementById('pv-clip'),sel.clip&&IMG.clip(sel.clip));
   setImg(document.getElementById('pv-buckle'),sel.belt&&IMG.belt(sel.belt));
   document.getElementById('pv-belt').classList.toggle('none',!sel.belt);
   document.getElementById('pv-nobelt').hidden=!!sel.belt;
 }
 
+function recommendKnot(){
+  const scores=knotScores();return Object.keys(KNOTS).sort((a,b)=>scores[b]-scores[a])[0];
+}
+function drawKnots(){
+  const scores=knotScores(),best=Math.max(...Object.values(scores));
+  document.querySelectorAll('button[data-knot]').forEach(b=>{
+    const score=scores[b.dataset.knot];
+    b.classList.toggle('sel',knot===b.dataset.knot);
+    b.classList.toggle('dim',score<6);
+    b.classList.toggle('recommended',score===best);
+    b.setAttribute('aria-pressed',knot===b.dataset.knot);
+    b.querySelector('.knot-note').textContent=score===best?'Recommended':score>=7?'Also works':'Less balanced';
+  });
+  const collar=COLLAR[sel.shirt]||'classic';
+  document.getElementById('knot-collar').textContent=sel.shirt?`${collar} collar`:'Choose a shirt';
+  document.getElementById('knot-help').textContent=sel.shirt
+    ?`${KNOTS[recommendKnot()].name} is the best proportion for this original collar. Pattern only nudges the preference; any knot remains selectable. Preview knot shapes are illustrative.`
+    :'Knot suggestions follow the shirt collar. Choose a shirt to get a recommendation.';
+}
+
 function describe(){
   const parts=[];
   if(sel.shirt)parts.push(`${get('shirt',sel.shirt).n} shirt`);
   if(sel.tie)parts.push(`${get('tie',sel.tie).n.toLowerCase()} tie`);
+  if(sel.tie)parts.push(`${KNOTS[knot].name} knot`);
   if(sel.clip)parts.push(`${get('clip',sel.clip).n.toLowerCase()} clip`);
   if(sel.belt)parts.push(`belt with ${get('belt',sel.belt).n.toLowerCase()}`);
   return parts.join(', ');
@@ -357,6 +429,7 @@ function describe(){
 
 function commit(){
   drawLook();
+  drawKnots();
   const picked=cats.filter(c=>sel[c]).length,n=count(sel);
   document.getElementById('count').innerHTML=picked===0?'Pick any piece to start.'
     :picked===4?'<b>Complete outfit.</b>'
@@ -391,7 +464,7 @@ document.getElementById('look').addEventListener('click',()=>{if(narrow.matches)
 document.addEventListener('keydown',e=>{if(e.key==='Escape')zoom(false);});
 narrow.addEventListener('change',()=>zoom(false));
 
-document.getElementById('reset').addEventListener('click',()=>{sel={...EMPTY};order=[];commit();});
+  document.getElementById('reset').addEventListener('click',()=>{sel={...EMPTY};order=[];knot='four';commit();});
 document.getElementById('fill').addEventListener('click',fill);
 
 build();load();commit();

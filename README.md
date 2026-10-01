@@ -10,6 +10,8 @@ Live: https://alex-tsvetanov.github.io/OutfitMatcher/
 - `assets/studio/` contains 29 digitally recreated product images: 8 shirts, 12 ties, 6 clips and 3 buckles. Both the cards and outfit preview use these images.
 - Shirts share a centered, closed collar; ties, clips and buckles use aligned transparent canvases.
 - Faded pieces don't fit the current picks. Picking one anyway removes whatever it clashes with.
+- The tie-knot guide ranks Four-in-Hand, Pratt, Half-Windsor and Windsor by collar space estimated from the original shirt photos. Tie pattern is a minor preference; every knot stays selectable.
+- Knot preview changes the selected tie's own knot crop to suggest size. Tie weight is not inferred from these photos, and the silhouettes are illustrative rather than a fabric-accurate tying simulation.
 - The last outfit is remembered in the browser.
 
 The studio images were made with the built-in image-generation tool using the wardrobe photos as references. They approximate the original colors and patterns; they are not exact fabric scans or measured fit simulations. Final prompts and source PNG hashes are recorded in `assets/studio/provenance.json`.
