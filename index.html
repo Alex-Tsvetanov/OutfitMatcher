@@ -54,14 +54,15 @@ h1{font:600 44px/0.95 var(--display);letter-spacing:-.015em;margin:0;text-wrap:b
 .stage img{position:absolute;display:block;max-width:none}
 .stage .shirt{inset:0;width:100%;height:100%;object-fit:contain}
 .stage .tie{left:50%;top:var(--knot);width:var(--tiew);height:auto;
-  clip-path:inset(15.1% 0 0);transform:translate(-50%,-15.1%);filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
+  clip-path:polygon(calc(50% - var(--blade-top,14%)) 15.1%,calc(50% + var(--blade-top,14%)) 15.1%,calc(50% + var(--blade-top,14%)) 19%,74% 24%,82% 28%,100% 31%,100% 100%,0 100%,0 31%,18% 28%,26% 24%,calc(50% - var(--blade-top,14%)) 19%);
+  transform:translateX(-50%);filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
 .stage .tie-knot{left:50%;top:var(--knot);width:var(--tiew);height:auto;clip-path:inset(0 0 84.9%);
   transform:translateX(-50%) scaleX(var(--knot-x,1));transform-origin:top center;
   filter:drop-shadow(0 1px 1px rgba(0,0,0,.22))}
-.stage .tie-knot[data-knot-style="four"]{--knot-x:.84}
-.stage .tie-knot[data-knot-style="pratt"]{--knot-x:.94}
-.stage .tie-knot[data-knot-style="half"]{--knot-x:1.06}
-.stage .tie-knot[data-knot-style="windsor"]{--knot-x:1.23}
+.stage .tie-knot[data-knot-style="four"],.stage .tie[data-knot-style="four"]{--knot-x:.84;--blade-top:12%}
+.stage .tie-knot[data-knot-style="pratt"],.stage .tie[data-knot-style="pratt"]{--knot-x:.94;--blade-top:13.2%}
+.stage .tie-knot[data-knot-style="half"],.stage .tie[data-knot-style="half"]{--knot-x:1.06;--blade-top:14.7%}
+.stage .tie-knot[data-knot-style="windsor"],.stage .tie[data-knot-style="windsor"]{--knot-x:1.23;--blade-top:17.2%}
 .stage .clip{left:50%;top:var(--clipy);width:var(--clipw);height:auto;transform:translate(-50%,-50%);
   filter:drop-shadow(0 1px 1.2px rgba(0,0,0,.5))}
 .stage .empty{position:absolute;inset:auto 0 12%;margin:0;text-align:center;color:var(--mute);font-size:14px}
@@ -387,7 +388,9 @@ function setImg(el,src){
 function drawLook(){
   setImg(document.getElementById('pv-shirt'),sel.shirt&&STAGE_SHIRT(sel.shirt));
   document.getElementById('pv-empty').hidden=!!sel.shirt;
-  setImg(document.getElementById('pv-tie'),sel.tie&&IMG.tie(sel.tie));
+  const tieImage=document.getElementById('pv-tie');
+  setImg(tieImage,sel.tie&&IMG.tie(sel.tie));
+  tieImage.dataset.knotStyle=knot;
   const knotImage=document.getElementById('pv-knot');
   setImg(knotImage,sel.tie&&IMG.tie(sel.tie));
   knotImage.dataset.knotStyle=knot;
