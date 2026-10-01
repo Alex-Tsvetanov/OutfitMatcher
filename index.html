@@ -63,6 +63,9 @@ h1{font:600 44px/0.95 var(--display);letter-spacing:-.015em;margin:0;text-wrap:b
 .stage .tie-knot[data-knot-style="pratt"],.stage .tie[data-knot-style="pratt"]{--knot-x:.94;--blade-top:13.2%}
 .stage .tie-knot[data-knot-style="half"],.stage .tie[data-knot-style="half"]{--knot-x:1.06;--blade-top:14.7%}
 .stage .tie-knot[data-knot-style="windsor"],.stage .tie[data-knot-style="windsor"]{--knot-x:1.23;--blade-top:17.2%}
+.stage .collar-flap{inset:0;width:100%;height:100%;object-fit:contain;z-index:3;pointer-events:none}
+.stage .collar-left{clip-path:polygon(38.3% 12.6%,50% 17.4%,42% 21.2%,37.4% 17.8%)}
+.stage .collar-right{clip-path:polygon(61.7% 12.6%,62.6% 17.8%,58% 21.2%,50% 17.4%)}
 .stage .clip{left:50%;top:var(--clipy);width:var(--clipw);height:auto;transform:translate(-50%,-50%);
   filter:drop-shadow(0 1px 1.2px rgba(0,0,0,.5))}
 .stage .empty{position:absolute;inset:auto 0 12%;margin:0;text-align:center;color:var(--mute);font-size:14px}
@@ -187,6 +190,8 @@ h2 small{font:500 12.5px/1 var(--ui);letter-spacing:.04em;text-transform:upperca
         <p class="empty" id="pv-empty">Pick a shirt</p>
         <img class="tie" id="pv-tie" alt="" hidden>
         <img class="tie-knot" id="pv-knot" alt="" hidden>
+        <img class="collar-flap collar-left" id="pv-collar-left" alt="" hidden>
+        <img class="collar-flap collar-right" id="pv-collar-right" alt="" hidden>
         <img class="clip" id="pv-clip" alt="" hidden>
       </div>
       <div class="belt" id="pv-belt">
@@ -386,7 +391,8 @@ function setImg(el,src){
 }
 
 function drawLook(){
-  setImg(document.getElementById('pv-shirt'),sel.shirt&&STAGE_SHIRT(sel.shirt));
+  const shirtImage=sel.shirt&&STAGE_SHIRT(sel.shirt);
+  setImg(document.getElementById('pv-shirt'),shirtImage);
   document.getElementById('pv-empty').hidden=!!sel.shirt;
   const tieImage=document.getElementById('pv-tie');
   setImg(tieImage,sel.tie&&IMG.tie(sel.tie));
@@ -394,6 +400,8 @@ function drawLook(){
   const knotImage=document.getElementById('pv-knot');
   setImg(knotImage,sel.tie&&IMG.tie(sel.tie));
   knotImage.dataset.knotStyle=knot;
+  setImg(document.getElementById('pv-collar-left'),shirtImage);
+  setImg(document.getElementById('pv-collar-right'),shirtImage);
   setImg(document.getElementById('pv-clip'),sel.clip&&IMG.clip(sel.clip));
   setImg(document.getElementById('pv-buckle'),sel.belt&&IMG.belt(sel.belt));
   document.getElementById('pv-belt').classList.toggle('none',!sel.belt);
